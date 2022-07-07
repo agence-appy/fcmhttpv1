@@ -5,6 +5,8 @@ namespace Appy\FcmHttpV1\Classes;
 use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Log;
+use Appy\FcmHttpV1\Helpers\AppyGoogleHelper;
+
 
 class AppyNotification
 {
