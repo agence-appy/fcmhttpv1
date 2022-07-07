@@ -1,6 +1,6 @@
 <?php
 
-namespace Appy\FcmHttpV1\Classes;
+namespace Appy\FcmHttpV1\Helpers;
 
 use Google\Client as GClient;
 use Google\Service\FirebaseCloudMessaging;
