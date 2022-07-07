@@ -2,7 +2,7 @@
     "name": "appy/fcmhttpv1",
     "description": "FCM HTTP V1 packages",
     "license": "MIT",
-    "type": "project",
+    "type": "library",
     "autoload": {
         "psr-4": {
             "Appy\\FcmHttpV1\\": "src/"
