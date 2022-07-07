@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Appy\FcmHttpV1;
 
 use Illuminate\Support\ServiceProvider;
 
