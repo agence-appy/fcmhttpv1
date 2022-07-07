@@ -25,6 +25,6 @@ class AppyProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'\config\firebase.php' => config_path('firebase.php'),
-        ]);
+        ], 'appyfcmhttpv1');
     }
 }
