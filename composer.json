@@ -1,0 +1,21 @@
+{
+    "name": "appy/fcmhttpv1",
+    "description": "FCM HTTP V1 packages",
+    "license": "MIT",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Appy\\FcmHttpV1\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Appy Agency"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "google/cloud-binary-authorization": "^0.5.0",
+        "google/apiclient": "^2.12.1"
+    }
+}
