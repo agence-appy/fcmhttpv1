@@ -24,7 +24,7 @@ class AppyProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'\config\firebase.php' => config_path('firebase.php'),
+            __DIR__.'\config\appy_firebase.php' => config_path('appy_firebase.php'),
         ], 'appyfcmhttpv1');
     }
 }
