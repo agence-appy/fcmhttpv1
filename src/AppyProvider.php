@@ -13,7 +13,7 @@ class AppyProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register('Appy\FcmHttpV1\ApyProvider');
+        $this->app->register('Appy\FcmHttpV1\AppyProvider');
 
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
         $loader->alias('AppyFcmHttpV1', 'Appy\FcmHttpV1\Classes\AppyFcmHttpV1');
