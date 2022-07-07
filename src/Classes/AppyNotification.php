@@ -20,31 +20,38 @@ class AppyNotification
     public function setTitle($title)
     {
         $this->title = $title;
+        return $this;
     }
 
     public function setBody($body)
     {
         $this->body = $body;
+        return $this;
     }
 
     public function setIcon($icon)
     {
         $this->icon = $icon;
+        return $this;
     }
 
     public function setClickAction($click_action)
     {
         $this->click_action = $click_action;
+        return $this;
     }
 
     public function setToken($token)
     {
         $this->token = $token;
+        return $this;
+
     }
 
     public function setTopic($topic)
     {
         $this->topic = $topic;
+        return $this;
     }
 
     public function send()
