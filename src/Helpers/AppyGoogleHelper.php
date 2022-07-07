@@ -6,7 +6,7 @@ use Google\Client as GClient;
 use Google\Service\FirebaseCloudMessaging;
 use Google_Exception;
 
-class AppyFcmHttpV1
+class AppyGoogleHelper
 {
     public static function configureClient()
     {

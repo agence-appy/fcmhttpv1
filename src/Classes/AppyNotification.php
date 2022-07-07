@@ -116,7 +116,7 @@ class AppyNotification
     {
         $url = config('appy_firebase.fcm_api_url');
 
-        $oauthToken = AppyFcmHttpV1::configureClient();
+        $oauthToken = AppyGoogleHelper::configureClient();
 
         $headers = [
             'Authorization' => 'Bearer ' . $oauthToken,
