@@ -77,7 +77,7 @@ class AppyNotification
         }
 
         // Icon verification
-        if (!file_exists(asset($this->icon))) {
+        if (!file_exists(public_path($this->icon))) {
             throw new Exception("Icon not found. Please verify the path of your icon(Path of the icon you tried to set: " . asset($this->icon));
         }
 
