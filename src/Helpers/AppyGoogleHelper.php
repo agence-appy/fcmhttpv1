@@ -17,7 +17,7 @@ class AppyGoogleHelper
             $client->setAuthConfig($path);
             $client->addScope(FirebaseCloudMessaging::CLOUD_PLATFORM);
 
-            $accessToken = AppyFcmHttpV1::generateToken($client);
+            $accessToken = AppyGoogleHelper::generateToken($client);
 
             $client->setAccessToken($accessToken);
 
