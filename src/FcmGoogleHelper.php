@@ -1,12 +1,12 @@
 <?php
 
-namespace Appy\FcmHttpV1\Helpers;
+namespace Appy\FcmHttpV1;
 
 use Google\Client as GClient;
 use Google\Service\FirebaseCloudMessaging;
 use Google_Exception;
 
-class AppyGoogleHelper
+class FcmGoogleHelper
 {
     public static function configureClient()
     {
@@ -17,7 +17,7 @@ class AppyGoogleHelper
             $client->setAuthConfig($path);
             $client->addScope(FirebaseCloudMessaging::CLOUD_PLATFORM);
 
-            $accessToken = AppyGoogleHelper::generateToken($client);
+            $accessToken = FcmGoogleHelper::generateToken($client);
 
             $client->setAccessToken($accessToken);
 

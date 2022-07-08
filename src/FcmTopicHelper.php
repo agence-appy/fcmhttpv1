@@ -1,19 +1,19 @@
 <?php
 
-namespace Appy\FcmHttpV1\Classes;
+namespace Appy\FcmHttpV1;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Log;
 use Exception;
 
-class AppyFcmHttpV1
+class FcmTopicHelper
 {
     public static function subscribeToTopic($tokens, $topic)
     {
         $url = "https://iid.googleapis.com/iid/v1:batchAdd";
 
         $headers = [
-            'Authorization' => 'key=' . config('appy_firebase.fcm_api_server_key'),
+            'Authorization' => 'key=' . config('fcm_config.fcm_api_server_key'),
             'Content-Type' =>  'application/json',
         ];
 
@@ -48,7 +48,7 @@ class AppyFcmHttpV1
 
 
         $headers = [
-            'Authorization' => 'key=' . config('appy_firebase.fcm_api_server_key'),
+            'Authorization' => 'key=' . config('fcm_config.fcm_api_server_key'),
             'Content-Type' =>  'application/json',
         ];
 
@@ -82,7 +82,7 @@ class AppyFcmHttpV1
         $url = "https://iid.googleapis.com/iid/info/" . $token . '?details=true';
 
         $headers = [
-            'Authorization' => 'key=' . config('appy_firebase.fcm_api_server_key'),
+            'Authorization' => 'key=' . config('fcm_config.fcm_api_server_key'),
             'Content-Type' =>  'application/json',
         ];
 

@@ -5,10 +5,10 @@ namespace Appy\FcmHttpV1\Classes;
 use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Log;
-use Appy\FcmHttpV1\Helpers\AppyGoogleHelper;
+use Appy\FcmHttpV1\FcmGoogleHelper;
 
 
-class AppyNotification
+class FcmNotification
 {
     protected $title;
     protected $body;
@@ -123,9 +123,9 @@ class AppyNotification
 
     private function handleSend($encodedData)
     {
-        $url = config('appy_firebase.fcm_api_url');
+        $url = config('fcm_config.fcm_api_url');
 
-        $oauthToken = AppyGoogleHelper::configureClient();
+        $oauthToken = FcmGoogleHelper::configureClient();
 
         $headers = [
             'Authorization' => 'Bearer ' . $oauthToken,

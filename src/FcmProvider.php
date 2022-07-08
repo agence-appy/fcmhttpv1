@@ -4,7 +4,7 @@ namespace Appy\FcmHttpV1;
 
 use Illuminate\Support\ServiceProvider;
 
-class AppyProvider extends ServiceProvider
+class FcmProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -24,7 +24,7 @@ class AppyProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '\config\appy_firebase.php' => config_path('appy_firebase.php'),
-        ], 'appyfcmhttpv1');
+            __DIR__ . '\config\fcm_config.php' => config_path('fcm_config.php'),
+        ], 'fcmhttpv1');
     }
 }
