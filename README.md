@@ -1,9 +1,21 @@
 # Laravel FCM Http V1 API Package
 
- A [Laravel](https://laravel.com/) package that allow you tu use the new FCM Http V1 API.
+ A [Laravel](https://laravel.com/) package that allow you tu use the new FCM Http V1 API and send push notification easily.  
  
- ## Installation
-If your firebase project is already configured, you can skip this part and go to the [Usage](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#usage) section  
+ ## Summary
+ 1. [Install](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#install)
+    - [Firebase](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#firebase)
+    - [Laravel](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#laravel)
+ 2. [Usage](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#usage)
+    - [Topics](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#firebase)
+      - [Subscribe](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#subscribe)
+      - [Unsubscribe](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#unsubscribe)
+      - [List subscriptions](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#list-subscriptions)
+    - [Notification](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#notification)
+ 
+ ## Install
+If your firebase project is already configured, you can skip this part and go to the [Usage](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#usage) section.  
+
 The installation will be in 2 steps. First we're gonna create and manage the firebase project through the [Firebase Console](https://console.firebase.google.com/u/0/). Then we'll see how to implement the Firebase FCM Http V1 in your awesome Laravel project.
 
 
@@ -64,5 +76,56 @@ php artisan vendor:publish --tag=appyfcmhttpv1 --ansi --force
 
 ## Usage
 
+### Topics
 
+Topics are used to make groups of device tokens. They will allow you to send notification directly to the topic where users are registered in.
+
+#### Subscribe
+
+The subscribeToTopic method take 2 arguments :
+  - tokens (array) The tokens you want to subscribe to the topic. Max 999 at same time (firebase limit)
+  - topic (string) Your awesome topic.
+  
+To subscribe tokens to a topic :
+
+```php
+use Appy\FcmHttpV1\Classes\AppyFcmHttpV1;
+
+$tokens = ["first token", ... , "last token"];
+AppyFcmHttpV1::subscribeToTopic($tokens, "myfirsttopic");
+```
+#### Unsubscribe
+
+```php
+use Appy\FcmHttpV1\Classes\AppyFcmHttpV1;
+
+$tokens = ["first token", ... , "last token"];
+AppyFcmHttpV1::unsubscribeToTopic($tokens, "myfirsttopic");
+```
+
+#### List subscriptions
+
+```php
+$token = "your awesome user device token";
+AppyFcmHttpV1::getTopicsByUser($token);
+```
+
+## Notification
+
+You can send notification to specific user or to topics.
+
+### Send to unique token
+```php
+use Appy\FcmHttpV1\Classes\AppyNotification;
+
+$notif = new AppyNotification();
+$notif->setTitle("Best title")->setBody("Awesome description, really.")->setIcon("icon.png")->setToken("your user token")->send();
+```
+
+### Send to topic
+```php
+use Appy\FcmHttpV1\Classes\AppyNotification;
+$notif = new AppyNotification();
+$notif->setTitle("Best title")->setBody("Awesome description, really.")->setIcon("icon.png")->setTopic("awesome")->send();
+```
 
