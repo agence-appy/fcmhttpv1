@@ -1,6 +1,6 @@
 <?php
 
-namespace Appy\FcmHttpV1\Classes;
+namespace Appy\FcmHttpV1;
 
 use Exception;
 use GuzzleHttp\Client;
