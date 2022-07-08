@@ -92,10 +92,8 @@ class FcmNotification
             throw new Exception("A notification need to have at least one target: token or topic. Please add a target using setToken() or setTopic().");
         }
 
-        if ($this->token != null) {
-            if (!is_string($this->token)) {
-                throw new Exception('Token format error. Received: ' . gettype($this->token) . ". Expected type: string");
-            }
+        if ($this->token != null && !is_string($this->token) {
+            throw new Exception('Token format error. Received: ' . gettype($this->token) . ". Expected type: string");
         }
 
         // Title verification
@@ -109,7 +107,7 @@ class FcmNotification
         }
 
         // Icon verification
-        if (!file_exists(public_path($this->icon))) {
+        if ($this->icon !=null && !file_exists(public_path($this->icon))) {
             throw new Exception("Icon not found. Please verify the path of your icon(Path of the icon you tried to set: " . asset($this->icon));
         }
 
