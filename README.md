@@ -3,7 +3,7 @@
  A [Laravel](https://laravel.com/) package that allow you tu use the new FCM Http V1 API.
  
  ## Installation
- 
+If your firebase project is already configured, you can skip this part and go to the [Usage](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#usage) section  
 The installation will be in 2 steps. First we're gonna create and manage the firebase project through the [Firebase Console](https://console.firebase.google.com/u/0/). Then we'll see how to implement the Firebase FCM Http V1 in your awesome Laravel project.
 
 
@@ -21,3 +21,48 @@ The installation will be in 2 steps. First we're gonna create and manage the fir
 6. Add an app nickname   
 ![Capture d’écran 2022-07-08 103625](https://user-images.githubusercontent.com/92929363/177952640-df8a5b86-7ce6-483e-9baf-a97751343378.png)
 7. Go into the project settings of the app and switch to the **Service accounts** tab and click on **Generate new private key**. It will download a json file containing credentials for your app.
+8. Go to project settings, cloud messaging tabs and enable CloudMessaging API ( click on the 3 dots a the righ, Manage API in Google Cloud Console, and enable the API)  
+![Capture d’écran 2022-07-08 142946](https://user-images.githubusercontent.com/92929363/177992435-e29223f7-6189-4052-baa1-c0455b2cc092.png)
+9. Refresh firebase console page, you will show a server key under the Cloud Messaging API. ( in Cloud Messaging tab)
+
+Firebase configuration is now completed.
+
+
+### Laravel
+
+1. Put the downloaded json at the root of project. ( JSON downloaded at step 7 of Firebase configuration )  
+![Capture d’écran 2022-07-08 144029](https://user-images.githubusercontent.com/92929363/177993938-910ddac2-0472-45f3-9c30-3568e0e0244b.png)
+2. Go to Firebase Console -> Project Settings -> General and watch firebaseConfig.
+![Capture d’écran 2022-07-08 144454](https://user-images.githubusercontent.com/92929363/177994579-978d7fbc-5d23-4302-a66e-9d86edb8eb76.png)
+3. Assign values to the .env variables
+
+```env
+FCM_API_KEY="<firebase apiKey>"
+FCM_AUTH_DOMAIN="<firebase authDomain>"
+FCM_PROJECT_ID="<firebase projectId>"
+FCM_STORAGE_BUCKET="<firebase storageBucket>"
+FCM_MESSAGIN_SENDER_ID="<firebase messagingSenderId>"
+FCM_APP_ID="<firebase appId>"
+FCM_JSON="<name of the json file downloaded at firebase step 7 install>"
+FCM_API_SERVER_KEY=<api server key step 8-9 of firebase install>
+```
+4. Package installation
+```
+composer require appy/fcmhttpv1
+```
+
+5. Register the provider in config/app.php
+
+```php
+Appy\FcmHttpV1\AppyProvider::class,
+```
+
+6. Publish config file
+```
+php artisan vendor:publish --tag=appyfcmhttpv1 --ansi --force
+```
+
+## Usage
+
+
+
