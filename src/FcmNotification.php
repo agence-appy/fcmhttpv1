@@ -92,18 +92,18 @@ class FcmNotification
             throw new Exception("A notification need to have at least one target: token or topic. Please add a target using setToken() or setTopic().");
         }
 
-        if ($this->token != null && !is_string($this->token) {
+        if ($this->token != null && !is_string($this->token)) {
             throw new Exception('Token format error. Received: ' . gettype($this->token) . ". Expected type: string");
         }
 
         // Title verification
         if (!isset($this->title)) {
-            throw new Exception('Empty notification title. Please add a title to the notification. Please use the setTitle() method.');
+            throw new Exception('Empty notification title. Please add a title to the notification with the setTitle() method.');
         }
 
         // Body verification
         if (!isset($this->body)) {
-            throw new Exception('Empty notification body. Please add a body to the notification. Please use the setBody() method');
+            throw new Exception('Empty notification body. Please add a body to the notification with the setBody() method');
         }
 
         // Icon verification
@@ -124,7 +124,7 @@ class FcmNotification
                         "notification" => [
                             "title" => $this->title,
                             "body" => $this->body,
-                            "icon" => asset($this->icon),
+                            "icon" => asset($this->icon) ?? '',
                             "click_action" => $this->link ?? ''
                         ],
                     ]
@@ -138,7 +138,7 @@ class FcmNotification
                         "notification" => [
                             "title" => $this->title,
                             "body" => $this->body,
-                            "icon" => asset($this->icon),
+                            "icon" => asset($this->icon) ?? '',
                             "click_action" => $this->link ?? ''
                         ],
                     ]

@@ -7,9 +7,26 @@ use Illuminate\Support\Facades\Log;
 use Exception;
 
 class FcmTopicHelper
-{
+{   
+    /**
+     * Subscribe a token to a specific topic
+     * @param array $tokens
+     * @param string $topic
+     */
     public static function subscribeToTopic($tokens, $topic)
-    {
+    {   
+        if(!isset($topic)){
+            throw new Exception("Topic can't be null");
+        }
+
+        if(!is_array($tokens)){
+            throw new Exception("Tokens needs to be passed as an array");
+        }
+
+        if(count($tokens) > 999){
+            throw new Exception("Too much tokens, limit is 999");
+        }
+
         $url = "https://iid.googleapis.com/iid/v1:batchAdd";
 
         $headers = [
