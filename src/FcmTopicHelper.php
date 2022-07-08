@@ -60,7 +60,7 @@ class FcmTopicHelper
         $client = new Client();
 
         try {
-            $request = $client->delete($url, [
+            $request = $client->post($url, [
                 'headers' => $headers,
                 "body" => json_encode($body)
             ]);
