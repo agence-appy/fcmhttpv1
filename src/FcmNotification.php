@@ -17,43 +17,69 @@ class FcmNotification
     protected $token;
     protected $topic;
 
+    /** 
+     *Title of the notification.
+     *@param string $title
+     */
     public function setTitle($title)
     {
         $this->title = $title;
         return $this;
     }
 
+    /** 
+     *Body of the notification.
+     *@param string $body
+     */
     public function setBody($body)
     {
         $this->body = $body;
         return $this;
     }
 
+    /** 
+     *Icon of the notification.
+     *@param string $icon
+     */
     public function setIcon($icon)
     {
         $this->icon = $icon;
         return $this;
     }
 
+    /**
+     *Link of the notification when user click on it.
+     *@param string $click_action
+     */
     public function setClickAction($click_action)
     {
         $this->click_action = $click_action;
         return $this;
     }
 
+    /**
+     *Token used to send notification to specific device. Unusable with setTopic() at same time.
+     *@param string $string
+     */
     public function setToken($token)
     {
         $this->token = $token;
         return $this;
-
     }
 
+    /**
+     *Topic of the notification. Unusable with setToken() at same time.
+     *@param string $topic
+     */
     public function setTopic($topic)
     {
         $this->topic = $topic;
         return $this;
     }
 
+    /**
+     * Verify the conformity of the notification. If everything is ok, send the notification.
+     */
     public function send()
     {
         // Token and topic combinaison verification
@@ -64,6 +90,12 @@ class FcmNotification
         // Empty token or topic verification
         if ($this->token == null && $this->topic == null) {
             throw new Exception("A notification need to have at least one target: token or topic. Please add a target using setToken() or setTopic().");
+        }
+
+        if ($this->token != null) {
+            if (!is_string($this->token)) {
+                throw new Exception('Token format error. Received: ' . gettype($this->token) . ". Expected type: string");
+            }
         }
 
         // Title verification
