@@ -1,6 +1,6 @@
 # Laravel FCM Http V1 API Package
 
- A [Laravel](https://laravel.com/) package that allow you tu use the new FCM Http V1 API and send push notification easily.  
+ A [Laravel](https://laravel.com/) package that allows you to use the new FCM Http V1 API and send push notification easily.  
  
  ## Summary
  1. [Install](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#install)
