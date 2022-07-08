@@ -8,13 +8,18 @@ use Exception;
 
 class AppyFcmHttpV1
 {
-    public static function subscribeToTopic($token, $topic)
+    public static function subscribeToTopic($tokens, $topic)
     {
-        $url = "https://iid.googleapis.com/iid/v1/" . $token . "/rel/topics/" . $topic;
+        $url = "https://iid.googleapis.com/iid/v1:batchAdd";
 
         $headers = [
             'Authorization' => 'key=' . config('appy_firebase.fcm_api_server_key'),
             'Content-Type' =>  'application/json',
+        ];
+
+        $body = [
+            "to" => "/topics/" . $topic,
+            "registration_tokens" => $tokens
         ];
 
         $client = new Client();
@@ -22,6 +27,7 @@ class AppyFcmHttpV1
         try {
             $request = $client->post($url, [
                 'headers' => $headers,
+                "body" => json_encode($body)
             ]);
 
             $response = $request->getBody();
@@ -36,13 +42,19 @@ class AppyFcmHttpV1
         }
     }
 
-    public static function unSubscribeToTopic($token, $topic)
+    public static function unSubscribeToTopic($tokens, $topic)
     {
-        $url = "https://iid.googleapis.com/iid/v1/" . $token . "/rel/topics/" . $topic;
+        $url = "https://iid.googleapis.com/iid/v1:batchRemove";
+
 
         $headers = [
             'Authorization' => 'key=' . config('appy_firebase.fcm_api_server_key'),
             'Content-Type' =>  'application/json',
+        ];
+
+        $body = [
+            "to" => "/topics/" . $topic,
+            "registration_tokens" => $tokens
         ];
 
         $client = new Client();
@@ -50,6 +62,7 @@ class AppyFcmHttpV1
         try {
             $request = $client->delete($url, [
                 'headers' => $headers,
+                "body" => json_encode($body)
             ]);
 
             $response = $request->getBody();
