@@ -12,6 +12,8 @@
       - [Unsubscribe](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#unsubscribe)
       - [List subscriptions](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#list-subscriptions)
     - [Notification](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#notification)
+      - [Send to unique token](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#send-to-unique-token)
+      - [Send to topic](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#send-to-topic)
  
  ## Install
 If your firebase project is already configured, you can skip this part and go to the [Usage](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#usage) section.  
