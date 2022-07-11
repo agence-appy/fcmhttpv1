@@ -125,7 +125,7 @@ class FcmNotification
                             "title" => $this->title,
                             "body" => $this->body,
                             "icon" => $this->icon !=null ? asset($this->icon) : '',
-                            "click_action" => $this->link ?? ''
+                            "click_action" => $this->click_action ?? ''
                         ],
                     ]
                 ]
@@ -139,7 +139,7 @@ class FcmNotification
                             "title" => $this->title,
                             "body" => $this->body,
                             "icon" => $this->icon !=null ? asset($this->icon) : '',
-                            "click_action" => $this->link ?? ''
+                            "click_action" => $this->click_action ?? ''
                         ],
                     ]
                 ]
