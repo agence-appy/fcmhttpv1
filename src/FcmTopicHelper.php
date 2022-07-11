@@ -94,7 +94,7 @@ class FcmTopicHelper
         }
     }
 
-    public static function getTopicsByUser($token)
+    public static function getTopicsByToken($token)
     {
         $url = "https://iid.googleapis.com/iid/info/" . $token . '?details=true';
 
@@ -112,11 +112,11 @@ class FcmTopicHelper
 
             $response = $request->getBody();
 
-            Log::info('[SUCCESS] get topics by user', [$response]);
+            Log::info('[SUCCESS] get topics by token', [$response]);
 
             return $response;
         } catch (Exception $e) {
-            Log::error("[ERROR] get topics by user ", [$e->getMessage()]);
+            Log::error("[ERROR] get topics by token ", [$e->getMessage()]);
 
             return $e;
         }
