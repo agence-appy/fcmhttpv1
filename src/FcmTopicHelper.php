@@ -20,11 +20,11 @@ class FcmTopicHelper
         }
 
         if(!is_array($tokens)){
-            throw new Exception("Tokens needs to be passed as an array");
+            throw new Exception("Tokens need to be passed as an array");
         }
 
-        if(count($tokens) > 999){
-            throw new Exception("Too much tokens, limit is 999");
+        if(is_array($tokens) && count($tokens) > 999){
+            throw new Exception("Too much tokens, limit is 999, received " . count($tokens));
         }
 
         $url = "https://iid.googleapis.com/iid/v1:batchAdd";
@@ -53,7 +53,7 @@ class FcmTopicHelper
 
             return $response;
         } catch (Exception $e) {
-            Log::error("[Error] on subscribe to topic: " . $topic . " ERROR", [$e->getMessage()]);
+            Log::error("[Error] on subscribe to topic: " . $topic, [$e->getMessage()]);
 
             return $e;
         }
@@ -112,7 +112,7 @@ class FcmTopicHelper
 
             $response = $request->getBody();
 
-            Log::info('[SUCCES] get topics by user', [$response]);
+            Log::info('[SUCCESS] get topics by user', [$response]);
 
             return $response;
         } catch (Exception $e) {

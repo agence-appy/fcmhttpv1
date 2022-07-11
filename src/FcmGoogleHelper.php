@@ -24,8 +24,6 @@ class FcmGoogleHelper
             $oauthToken = $accessToken["access_token"];
 
             return $oauthToken;
-            // the client is configured, now you can send the push notification using the $oauthToken.
-
         } catch (Google_Exception $e) {
             return $e;
         }
