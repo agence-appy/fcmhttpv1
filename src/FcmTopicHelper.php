@@ -7,23 +7,23 @@ use Illuminate\Support\Facades\Log;
 use Exception;
 
 class FcmTopicHelper
-{   
+{
     /**
-     * Subscribe a token to a specific topic
+     * Subscribe tokens to a specific topic
      * @param array $tokens
      * @param string $topic
-     */
+    */
     public static function subscribeToTopic($tokens, $topic)
-    {   
-        if(!isset($topic)){
+    {
+        if (!isset($topic)) {
             throw new Exception("Topic can't be null");
         }
 
-        if(!is_array($tokens)){
+        if (!is_array($tokens)) {
             throw new Exception("Tokens need to be passed as an array");
         }
 
-        if(is_array($tokens) && count($tokens) > 999){
+        if (is_array($tokens) && count($tokens) > 999) {
             throw new Exception("Too much tokens, limit is 999, received " . count($tokens));
         }
 
@@ -59,6 +59,11 @@ class FcmTopicHelper
         }
     }
 
+    /**
+     * Subscribe tokens to a specific topic
+     * @param array $tokens
+     * @param string $topic
+    */
     public static function unSubscribeToTopic($tokens, $topic)
     {
         $url = "https://iid.googleapis.com/iid/v1:batchRemove";
@@ -94,6 +99,11 @@ class FcmTopicHelper
         }
     }
 
+    /**
+     * Subscribe a token to a specific topic
+     * @param array $token
+     * @return array [topic, addDate]
+    */
     public static function getTopicsByToken($token)
     {
         $url = "https://iid.googleapis.com/iid/info/" . $token . '?details=true';
@@ -116,7 +126,7 @@ class FcmTopicHelper
 
             $topics = [];
 
-            foreach($decoded_res as $k => $v){
+            foreach ($decoded_res as $k => $v) {
                 array_push($topics, [$k, $v['addDate']]);
             }
 
