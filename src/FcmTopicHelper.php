@@ -110,11 +110,17 @@ class FcmTopicHelper
                 'headers' => $headers,
             ]);
 
-            $response = $request->getBody();
+            $response = $request->getBody()->getContents();
 
-            Log::info('[SUCCESS] get topics by token', [$response]);
+            $decoded_res = json_decode($response, true)["rel"]["topics"];
 
-            return $response;
+            $topics = [];
+
+            foreach($decoded_res as $k => $v){
+                array_push($topics, [$k, $v['addDate']]);
+            }
+
+            return $topics;
         } catch (Exception $e) {
             Log::error("[ERROR] get topics by token ", [$e->getMessage()]);
 
