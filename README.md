@@ -68,12 +68,12 @@ composer require appy/fcmhttpv1
 5. Register the provider in config/app.php
 
 ```php
-Appy\FcmHttpV1\AppyProvider::class,
+Appy\FcmHttpV1\FcmProvider::class,
 ```
 
 6. Publish config file
 ```
-php artisan vendor:publish --tag=appyfcmhttpv1 --ansi --force
+php artisan vendor:publish --tag=fcmhttpv1 --ansi --force
 ```
 
 ## Usage
@@ -84,32 +84,31 @@ Topics are used to make groups of device tokens. They will allow you to send not
 
 #### Subscribe
 
-The subscribeToTopic method take 2 arguments :
-  - tokens (array) The tokens you want to subscribe to the topic. Max 999 at same time (firebase limit)
-  - topic (string) Your awesome topic.
-  
 To subscribe tokens to a topic :
 
 ```php
-use Appy\FcmHttpV1\Classes\AppyFcmHttpV1;
+use Appy\FcmHttpV1\FcmTopicHelper;
 
 $tokens = ["first token", ... , "last token"];
-AppyFcmHttpV1::subscribeToTopic($tokens, "myfirsttopic");
+FcmTopicHelper::subscribeToTopic($tokens, "myTopic");
 ```
 #### Unsubscribe
 
 ```php
-use Appy\FcmHttpV1\Classes\AppyFcmHttpV1;
+use Appy\FcmHttpV1\FcmTopicHelper;
 
 $tokens = ["first token", ... , "last token"];
-AppyFcmHttpV1::unsubscribeToTopic($tokens, "myfirsttopic");
+FcmTopicHelper::unsubscribeToTopic($tokens, "myTopic");
 ```
 
 #### List subscriptions
 
 ```php
-$token = "your awesome user device token";
-AppyFcmHttpV1::getTopicsByUser($token);
+use Appy\FcmHttpV1\FcmTopicHelper;
+
+$token = "your awesome device token";
+FcmTopicHelper::getTopicsByToken($token);
+
 ```
 
 ## Notification
@@ -118,16 +117,19 @@ You can send notification to specific user or to topics.
 
 ### Send to unique token
 ```php
-use Appy\FcmHttpV1\Classes\AppyNotification;
+use Appy\FcmHttpV1\FcmNotification;
 
-$notif = new AppyNotification();
-$notif->setTitle("Best title")->setBody("Awesome description, really.")->setIcon("icon.png")->setToken("your user token")->send();
+$notif = new FcmNotification();
+$notif->setTitle("Title")->setBody("Message here")->setIcon("icon.png")->setToken("put device token here")->setClickAction("/news")->send();
+
 ```
 
 ### Send to topic
 ```php
-use Appy\FcmHttpV1\Classes\AppyNotification;
-$notif = new AppyNotification();
-$notif->setTitle("Best title")->setBody("Awesome description, really.")->setIcon("icon.png")->setTopic("awesome")->send();
+use Appy\FcmHttpV1\FcmNotification;
+
+$notif = new FcmNotification();
+$notif->setTitle("Title")->setBody("Message here")->setIcon("icon.png")->setTopic("general_topic")->setClickAction("/news")->send();
+
 ```
 
