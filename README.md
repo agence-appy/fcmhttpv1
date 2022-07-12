@@ -6,6 +6,7 @@
  1. [Install](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#install)
     - [Firebase](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#firebase)
     - [Laravel](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#laravel)
+    - [Laravel PWA](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#laravel-pwa)
  2. [Usage](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#usage)
     - [Topics](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#firebase)
       - [Subscribe](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#subscribe)
@@ -76,6 +77,35 @@ Appy\FcmHttpV1\FcmProvider::class,
 php artisan vendor:publish --tag=fcmhttpv1 --ansi --force
 ```
 
+### Laravel PWA
+1. Please follow this [tutorial](https://github.com/silviolleite/laravel-pwa) to configure Laravel PWA.
+
+2. Create a file "firebase-messaging-sw.js" at public folder of your project.
+
+```js
+// Give the service worker access to Firebase Messaging.
+// Note that you can only use Firebase Messaging here. Other Firebase libraries
+// are not available in the service worker.
+importScripts('https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js');
+
+// Initialize the Firebase app in the service worker by passing in
+// your app's Firebase config object.
+// https://firebase.google.com/docs/web/setup#config-object
+firebase.initializeApp({
+  apiKey: 'api-key',
+  authDomain: 'project-id.firebaseapp.com',
+  databaseURL: 'https://project-id.firebaseio.com',
+  projectId: 'project-id',
+  storageBucket: 'project-id.appspot.com',
+  messagingSenderId: 'sender-id',
+  appId: 'app-id',
+});
+
+// Retrieve an instance of Firebase Messaging so that it can handle background
+// messages.
+const messaging = firebase.messaging();
+```
 ## Usage
 
 ### Topics
