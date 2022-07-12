@@ -3,21 +3,21 @@
  A [Laravel](https://laravel.com/) package that lets you use the new FCM Http V1 API and send push notifications with ease.
  
  ## Summary
- 1. [Install](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#install)
-    - [Firebase](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#firebase)
-    - [Laravel](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#laravel)
-    - [Laravel PWA](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#laravel-pwa)
- 2. [Usage](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#usage)
-    - [Topics](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#firebase)
-      - [Subscribe](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#subscribe)
-      - [Unsubscribe](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#unsubscribe)
-      - [List subscriptions](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#list-subscriptions)
-    - [Notification](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#notification)
-      - [Send to unique token](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#send-to-unique-token)
-      - [Send to topic](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#send-to-topic)
+ 1. [Install](https://github.com/agence-appy/fcmhttpv1#install)
+    - [Firebase](https://github.com/agence-appy/fcmhttpv1#firebase)
+    - [Laravel](https://github.com/agence-appy/fcmhttpv1#laravel)
+    - [Laravel PWA](https://github.com/agence-appy/fcmhttpv1#laravel-pwa)
+ 2. [Usage](https://github.com/agence-appy/fcmhttpv1#usage)
+    - [Topics](https://github.com/agence-appy/fcmhttpv1#firebase)
+      - [Subscribe](https://github.com/agence-appy/fcmhttpv1#subscribe)
+      - [Unsubscribe](https://github.com/agence-appy/fcmhttpv1#unsubscribe)
+      - [List subscriptions](https://github.com/agence-appy/fcmhttpv1#list-subscriptions)
+    - [Notification](https://github.com/agence-appy/fcmhttpv1#notification)
+      - [Send to unique token](https://github.com/agence-appy/fcmhttpv1#send-to-unique-token)
+      - [Send to topic](https://github.com/agence-appy/fcmhttpv1#send-to-topic)
  
  ## Install
-If your firebase project is already setup, you can skip that part and go to the [Usage section](https://github.com/agence-appy/fcmhttpv1/edit/master/README.md#usage) section.  
+If your firebase project is already setup, you can skip that part and go to the [Usage section](https://github.com/agence-appy/fcmhttpv1#usage) section.  
 
 The installation will take two steps. First we will build and manage the firebase project through the Firebase Console. Then we will see how you can implement the Firebase FCM Http V1 in your awesome Laravel project.
 
