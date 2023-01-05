@@ -124,7 +124,7 @@ class FcmNotification
                         "notification" => [
                             "title" => $this->title,
                             "body" => $this->body,
-                            "icon" => $this->icon !=null ? asset($this->icon) : '',
+                            "icon" => $this->icon != null ? asset($this->icon) : '',
                             "click_action" => $this->click_action ?? ''
                         ],
                     ]
@@ -134,12 +134,37 @@ class FcmNotification
             $data = [
                 "message" => [
                     "token" => $this->token,
-                    "webpush" => [
+                    // "notification" => [
+                    //     "title" => $this->title,
+                    //     "body" => $this->body,
+                    // ],
+                    "data" => [
+                        'notifier' => 'okov'
+                    ],
+                    "android" => [
+                        "data" => [
+                            'notifier' => 'okov'
+                        ],
+                        "priority" => 'high',
                         "notification" => [
                             "title" => $this->title,
                             "body" => $this->body,
-                            "icon" => $this->icon !=null ? asset($this->icon) : '',
-                            "click_action" => $this->click_action ?? ''
+                            // "icon" => "https://www.okov.rs/images/favicon.png",
+                            "sound" => "default",
+                            "default_sound" => 1,
+                            "default_vibrate_timings" => 1,
+                            'notification_priority' => "PRIORITY_HIGH"
+                        ]
+                    ],
+                    "apns" => [
+                        "payload" => [
+                            'aps' => [
+                                'alert' => [
+                                    "title" => $this->title,
+                                    "body" => $this->body,
+                                ],
+                                "sound" => "default"
+                            ]
                         ],
                     ]
                 ]
