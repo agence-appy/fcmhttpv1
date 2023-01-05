@@ -10,7 +10,7 @@ class FcmGoogleHelper
 {
     public static function configureClient()
     {
-        $path = base_path() . '/' . env('FCM_JSON');
+        $path = config('fcm_config.fcm_json_path');
 
         $client = new GClient();
         try {

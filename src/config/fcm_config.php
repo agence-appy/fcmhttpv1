@@ -10,5 +10,6 @@ return [
         'appId' => env('FCM_APP_ID')
     ],
     'fcm_api_url' => "https://fcm.googleapis.com/v1/projects/". env('FCM_PROJECT_ID') . "/messages:send",
-    'fcm_api_server_key' => env('FCM_API_SERVER_KEY')
+    'fcm_api_server_key' => env('FCM_API_SERVER_KEY'),
+    'fcm_json_path' => base_path() . '/' . env('FCM_JSON')
 ];
