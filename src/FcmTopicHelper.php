@@ -34,11 +34,12 @@ class FcmTopicHelper
         $headers = [
             'Authorization' => 'Bearer ' . $oauthToken,
             'Content-Type' =>  'application/json',
+            'access_token_auth' => true
         ];
 
         $body = [
             "to" => "/topics/" . $topic,
-            "registration_tokens" => $tokens
+            "registration_tokens" => $tokens,
         ];
 
         $client = new Client();
@@ -75,6 +76,7 @@ class FcmTopicHelper
         $headers = [
             'Authorization' => 'Bearer ' . $oauthToken,
             'Content-Type' =>  'application/json',
+            'access_token_auth' => true
         ];
 
         $body = [
@@ -116,6 +118,7 @@ class FcmTopicHelper
         $headers = [
             'Authorization' => 'Bearer ' . $oauthToken,
             'Content-Type' =>  'application/json',
+            'access_token_auth' => true
         ];
 
         $client = new Client();
